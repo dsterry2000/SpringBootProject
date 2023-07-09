@@ -18,10 +18,10 @@ public class GlobalErrorHandler {
 		
 	@ExceptionHandler(NoSuchElementException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public Map<String, String> handleNoSuchElementException(@PathVariable Long petStoreID, NoSuchElementException ex) {
+	public Map<String, String> handleNoSuchElementException(NoSuchElementException ex) {
 		
 		String exMessage = ex.toString();
-		log.error(ex.toString());
+		log.error("Exception {}", ex.toString());
 						
 		return Map.of("message", exMessage );
 	}
